@@ -1,0 +1,29 @@
+theme(fauna).
+theme(flora).
+theme(sport).
+theme(kosmos).
+
+otvet(Anim) :-
+    Anim = [_, _, _, _],
+    member([volk, fauna], Anim),
+    member([nif, Nif], Anim), theme(Nif), Nif \= fauna,
+    member([naf,Naf], Anim), theme(Naf), Naf \= fauna,
+    member([nuf, Nuf], Anim), theme(Nuf), Nuf \= fauna,
+    sleva([volk, fauna], [naf, Naf], Anim),
+    sprava([nif, Nif], [_, kosmos], Anim),
+    naprotiv([nuf, Nuf], [naf, Naf], Anim),
+    Nuf \= sport,
+    diff([fauna, Nif, Naf, Nuf]).
+
+sleva(One, Two, [One, Two | _]).
+sleva(One, Two, [_ | Ostatok]) :- sleva(One, Two, Ostatok).
+
+sprava(One, Two, [One, Two | _]).
+sprava(One, Two, [_ | Ostatok]) :- sprava(One, Two, Ostatok).
+
+naprotiv(One, Two, [One, _, Two, _]).
+naprotiv(One, Two, [_, One, _, Two]).
+
+diff([]).
+diff([Start|End]) :- not(member(Start, End)), diff(End).
+
