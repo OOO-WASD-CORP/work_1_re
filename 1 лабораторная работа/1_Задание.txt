@@ -11,7 +11,7 @@ otvet(Anim) :-
     member([nuf,Nuf], Anim),theme(Nuf), Nuf \= fauna,
     sleva([volk,fauna], [naf,Naf], Anim),
     sprava([nif,Nif], [_, kosmos], Anim),
-    naprotiv([nuf,Nuf], [naf, Naf], Anim),
+    naprotiv([nuf, Nuf], [naf, Naf], Anim),
     Nuf \= sport,
     diff([fauna,Nif, Naf, Nuf]).
 
